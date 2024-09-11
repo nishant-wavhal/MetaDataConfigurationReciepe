@@ -26,7 +26,7 @@
 ## Final Output
 
    - Use Case  1 :
-     ![alt text](https://github.com/nishant-wavhal/Beyonexx/blob/master/N26UseCase1.png)
+     ![alt text](https://github.com/nishant-wavhal/N26ChallengeTask/blob/main/N26UseCase1.png)
 
    - Use Case 2 :
-      ![alt text](https://github.com/nishant-wavhal/Beyonexx/blob/master/N26UseCase2.png)
+      ![alt text](https://github.com/nishant-wavhal/N26ChallengeTask/blob/main/N26UseCase2.png)

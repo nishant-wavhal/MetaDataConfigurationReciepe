@@ -1,0 +1,12 @@
+.my-icon {
+    --slds-c-icon-color-foreground: #36a18b;
+    --slds-c-icon-color: #36a18b;
+}
+.my-text {
+   font-weight: bold;
+}
+
+.my-text1 {
+    color:gray
+ }
+ hr { margin: 3px; }

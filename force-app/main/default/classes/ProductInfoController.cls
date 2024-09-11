@@ -1,0 +1,45 @@
+/*
+Author: Nishant Mohan Wavhal
+Apex Class for providing Service Agents with view of features and there Cost while handling support case through LWC
+*/
+public with sharing class ProductInfoController {
+    @AuraEnabled(cacheable=true)
+    public static ProductMetadataWrapper getServices(Id caseId){
+        
+        ProductMetadataWrapper mdtwrapper;     
+        Product_Subscription__mdt psubscriptioncost;
+        
+        String homecountry;
+        String product;
+        String isocode;
+        
+        if(caseId !=null)
+        {
+            Case cs = [select id ,ContactId,contact.home_Country__c,contact.CurrencyIsoCode,contact.Product__c from Case where id =:caseId WITH USER_MODE limit 1];
+            if(cs!=null)
+            { 
+                if(cs.ContactId!=null)
+                {
+
+                    if(cs.contact.home_Country__c!=null && cs.contact.product__c!=null && cs.contact.home_Country__c!='' && cs.contact.product__c!='')
+                    {
+                        psubscriptioncost= ProductMetaDataInfo.getproductcostconfig(cs.contact.home_Country__c,cs.contact.product__c);                     
+                        homeCountry=cs.contact.home_Country__c;
+                        product=cs.contact.product__c;
+                        isocode=cs.contact.CurrencyIsoCode;
+                    }
+                    else
+                        throw new AuraHandledException('Contact has Product / Home Country missing'); 
+                }
+                else
+                    throw new AuraHandledException('Contact Value is Null'); 
+            }
+            
+        }
+        if(psubscriptioncost!=null)
+        {
+            mdtwrapper= new ProductMetadataWrapper(homecountry,product,isocode,psubscriptioncost);
+        }        
+        return mdtwrapper;         
+    } 
+}

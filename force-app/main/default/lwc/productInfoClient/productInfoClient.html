@@ -1,0 +1,68 @@
+<!--
+Author: Nishant Mohan Wavhal
+Lightning Web Component for Product Info HTML Component
+-->
+<template>
+    <template lwc:if={product}>
+        <lightning-card>
+            <h3 slot="title">
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col slds-size_0.2-of-3">
+                        <lightning-icon icon-name="utility:product" size="large" variant="inverse" class="my-icon"></lightning-icon>                 
+                    </div>
+                    <div class="slds-col slds-size_2.8-of-3">
+                        <div class="slds-grid slds-grid_vertical">
+                            <div class="slds-col">
+                            <span>Product Subscription : {product}</span>
+                            </div>
+                            <div class="slds-col">
+                            <span>({homecountry})</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+            </h3>
+        <hr></hr>   
+        <div class="slds-grid">
+            <div class="slds-col">
+                <div class="slds-p-around_small lgc-bg">
+                    <div class="slds-grid slds-grid_vertical">
+                        <div class="slds-col">
+                            <lightning-formatted-text  value="Cost Per Calender Month" ></lightning-formatted-text>
+                        </div>
+                        <div class="slds-col">
+                            <lightning-formatted-number class="my-text1" value={cost_calmonth} format-style="currency" currency-code={isocode}></lightning-formatted-number>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-col">
+                <div class="slds-p-around_small lgc-bg">
+                    <div class="slds-grid slds-grid_vertical">
+                        <div class="slds-col">
+                            <lightning-formatted-text  value="ATM Fee on Currencies %" ></lightning-formatted-text>
+                        </div>
+                        <div class="slds-col">
+                            <lightning-formatted-number class="my-text1" value={atm_fee} format-style="percent-fixed"></lightning-formatted-number>                
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-col">
+                <div class="slds-p-around_small lgc-bg">
+                    <div class="slds-grid slds-grid_vertical">
+                        <div class="slds-col">
+                            <lightning-formatted-text  value="Card Replacement Cost" ></lightning-formatted-text>
+                        </div>
+                        <div class="slds-col">
+                            <lightning-formatted-number class="my-text1" value={cardreplace_cost} format-style="currency" currency-code={isocode}></lightning-formatted-number>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </lightning-card>
+    </template>
+    <template lwc:else>
+    </template>
+</template>

@@ -26,7 +26,8 @@ global class ProductInfoService {
                 c=[select id ,home_Country__c,Product__c,CurrencyIsoCode from Contact where uuid__c =:contactUUID limit 1];
             }
             catch(Exception e)
-            {            
+            {   
+                res.statusCode=500;         
                 res.responseBody=Blob.valueOf(e.getmessage());               	
             }
             
@@ -50,16 +51,18 @@ global class ProductInfoService {
                         res.statusCode=500; 
                     }
                 }
-                else
+
+            }
+            else
                 {
+                    res.statusCode=500; 
                     res.responseBody=Blob.valueOf(JSON.serialize(new CustomErrorException('500','Contact Value has an Error')));
                 }
-            }
             
         }
         else
         {		
-            
+            res.statusCode=500; 
             res.ResponseBody =Blob.valueOf(JSON.serialize(new CustomErrorException('500','Please Enter Contact UUID')));
         }
         

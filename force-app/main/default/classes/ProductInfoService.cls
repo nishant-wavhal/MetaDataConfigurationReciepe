@@ -12,8 +12,7 @@ global class ProductInfoService {
         RestResponse res =RestContext.response;
         
         String contactUUID= UUID;
-        ProductMetadataWrapper mdtwrapper=null;
-        Product_Subscription__mdt psubscriptioncost;
+        Product_Subscription__mdt psubscriptioncost=null;
         
         String homecountry;
         String product;
@@ -40,6 +39,16 @@ global class ProductInfoService {
                     homeCountry=c.home_Country__c;                  
                     product=c.product__c;                   
                     isocode=c.CurrencyIsoCode;
+
+                    if(psubscriptioncost!=null)
+                    {           
+                        res.statusCode=200; 
+                        res.ResponseBody =Blob.valueOf(JSON.serialize(new ProductMetadataWrapper(homecountry,product,isocode,psubscriptioncost)));
+                    }
+                    else
+                    {
+                        res.statusCode=500; 
+                    }
                 }
                 else
                 {
@@ -54,16 +63,6 @@ global class ProductInfoService {
             res.ResponseBody =Blob.valueOf(JSON.serialize(new CustomErrorException('500','Please Enter Contact UUID')));
         }
         
-        if(psubscriptioncost!=null)
-        {           
-            mdtwrapper= new ProductMetadataWrapper(homecountry,product,isocode,psubscriptioncost);
-            res.statusCode=200; 
-            res.ResponseBody =Blob.valueOf(JSON.serialize(mdtwrapper));
-        }
-        else
-        {
-            res.statusCode=500; 
-        }
         
     } 
 }

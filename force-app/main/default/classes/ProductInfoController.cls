@@ -6,8 +6,8 @@ public with sharing class ProductInfoController {
     @AuraEnabled(cacheable=true)
     public static ProductMetadataWrapper getServices(Id caseId){
         
-        ProductMetadataWrapper mdtwrapper;     
-        Product_Subscription__mdt psubscriptioncost;
+        ProductMetadataWrapper mdtwrapper=null;     
+        Product_Subscription__mdt psubscriptioncost=null;
         
         String homecountry;
         String product;
@@ -27,6 +27,10 @@ public with sharing class ProductInfoController {
                         homeCountry=cs.contact.home_Country__c;
                         product=cs.contact.product__c;
                         isocode=cs.contact.CurrencyIsoCode;
+                        if(psubscriptioncost!=null)
+                         {
+                            mdtwrapper= new ProductMetadataWrapper(homecountry,product,isocode,psubscriptioncost);
+                         } 
                     }
                     else
                         throw new AuraHandledException('Contact has Product / Home Country missing'); 
@@ -36,10 +40,7 @@ public with sharing class ProductInfoController {
             }
             
         }
-        if(psubscriptioncost!=null)
-        {
-            mdtwrapper= new ProductMetadataWrapper(homecountry,product,isocode,psubscriptioncost);
-        }        
+       
         return mdtwrapper;         
     } 
 }

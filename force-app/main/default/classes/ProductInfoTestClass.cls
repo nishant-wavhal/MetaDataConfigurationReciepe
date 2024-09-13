@@ -122,7 +122,6 @@ public with sharing class ProductInfoTestClass {
         
     }
     
-    
     @isTest  
     public static void getProductinfoUUIDtest2() {
         User u = [select id from User where FirstName='supportukfName'];

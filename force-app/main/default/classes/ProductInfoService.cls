@@ -5,7 +5,7 @@ Customer product subscription data
 */
 
 @RestResource(urlMapping='/ProductInfoService/*')
-global class ProductInfoService {   
+global with sharing class ProductInfoService {   
     
     @HttpPOST
     global static void  getCustomerfeatures(String UUID) {

@@ -1,7 +1,9 @@
 /*
 Author: Nishant Mohan Wavhal
-Apex Class to Call API Services for External partners
+Apex Class to Call API Services for External partners so they can access 
+Customer product subscription data
 */
+
 @RestResource(urlMapping='/ProductInfoService/*')
 global class ProductInfoService {   
     
@@ -12,7 +14,7 @@ global class ProductInfoService {
         RestResponse res =RestContext.response;
         
         String contactUUID= UUID;
-        Product_Subscription__mdt psubscriptioncost=null;
+        Product_Subscription__mdt productsubscription=null;
         
         String homecountry;
         String product;
@@ -36,33 +38,33 @@ global class ProductInfoService {
             {
                 if(c.home_Country__c!=null && c.product__c!=null && c.home_Country__c!='' && c.product__c!='')
                 {        
-                    psubscriptioncost= ProductMetaDataInfo.getproductcostconfig(c.home_Country__c,c.product__c);                     
+                    productsubscription= CustomMetaDataInfo.getproductcostconfig(c.home_Country__c,c.product__c);                     
                     homeCountry=c.home_Country__c;                  
                     product=c.product__c;                   
                     isocode=c.CurrencyIsoCode;
 
-                    if(psubscriptioncost!=null)
+                    if(productsubscription!=null)
                     {           
                         res.statusCode=200; 
-                        res.ResponseBody =Blob.valueOf(JSON.serialize(new ProductMetadataWrapper(homecountry,product,isocode,psubscriptioncost)));
+                        res.ResponseBody =Blob.valueOf(JSON.serialize(new ProductMetadataWrapper(homecountry,product,isocode,productsubscription)));
                     }
                     else
                     {
-                        res.statusCode=500; 
+                        res.statusCode=400; 
                     }
                 }
 
             }
             else
                 {
-                    res.statusCode=500; 
+                    res.statusCode=400; 
                     res.responseBody=Blob.valueOf(JSON.serialize(new CustomErrorException('500','Contact Value has an Error')));
                 }
             
         }
         else
         {		
-            res.statusCode=500; 
+            res.statusCode=400; 
             res.ResponseBody =Blob.valueOf(JSON.serialize(new CustomErrorException('500','Please Enter Contact UUID')));
         }
         

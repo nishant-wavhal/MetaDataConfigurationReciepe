@@ -1,8 +1,10 @@
 /*
 Author: Nishant Mohan Wavhal
-Apex Class to ProductMetaDataInfo for retrieving metadat info for features
+Apex Class CustomMetaDataInfo for retrieving metadata info for 
+as single responsibilty various custom metatdata
 */
-public with sharing class ProductMetaDataInfo {
+
+public class CustomMetaDataInfo {
         
     public static Product_Subscription__mdt getproductcostconfig(String homecountry,String product)
     { 

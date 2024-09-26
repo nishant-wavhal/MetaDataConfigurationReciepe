@@ -2,6 +2,7 @@
 Author: Nishant Mohan Wavhal
     Apex Class TestClass for ProductInfoService covering SUCCESS and FAILURE scenarios
 */
+
 @isTest
 public with sharing class ProductServiceTestClass {
     @TestSetup
@@ -83,7 +84,7 @@ public with sharing class ProductServiceTestClass {
         ProductInfoService.getCustomerfeatures('123');
         Test.stopTest();
         
-        System.assertEquals(500, RestContext.response.statusCode,'error'); 
+        System.assertEquals(400, RestContext.response.statusCode,'error'); 
     }
     
     @isTest  
@@ -101,7 +102,7 @@ public with sharing class ProductServiceTestClass {
         ProductInfoService.getCustomerfeatures(c.uuid__c);
         Test.stopTest();
         
-        System.assertEquals(500, RestContext.response.statusCode,'error'); 
+        System.assertEquals(400, RestContext.response.statusCode,'error'); 
     }
     
     @isTest
@@ -118,7 +119,7 @@ public with sharing class ProductServiceTestClass {
         ProductInfoService.getCustomerfeatures(NULL);
         Test.stopTest();
         
-        System.assertEquals(500, RestContext.response.statusCode,'error'); 
+        System.assertEquals(400, RestContext.response.statusCode,'error'); 
     }
     
 }

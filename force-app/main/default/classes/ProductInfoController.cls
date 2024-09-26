@@ -1,13 +1,15 @@
 /*
 Author: Nishant Mohan Wavhal
-Apex Class for providing Service Agents with view of features and there Cost while handling support case through LWC
+Apex Class for providing Service Agents with data to view of features
+while handling support case via LWC
 */
+
 public with sharing class ProductInfoController {
     @AuraEnabled(cacheable=true)
     public static ProductMetadataWrapper getServices(Id caseId){
         
-        ProductMetadataWrapper mdtwrapper=null;     
-        Product_Subscription__mdt psubscriptioncost=null;
+        ProductMetadataWrapper productconfigwrapper=null;     
+        Product_Subscription__mdt productsubscription=null;
         
         String homecountry;
         String product;
@@ -23,13 +25,13 @@ public with sharing class ProductInfoController {
 
                     if(cs.contact.home_Country__c!=null && cs.contact.product__c!=null && cs.contact.home_Country__c!='' && cs.contact.product__c!='')
                     {
-                        psubscriptioncost= ProductMetaDataInfo.getproductcostconfig(cs.contact.home_Country__c,cs.contact.product__c);                     
+                        productsubscription= CustomMetaDataInfo.getproductcostconfig(cs.contact.home_Country__c,cs.contact.product__c);                     
                         homeCountry=cs.contact.home_Country__c;
                         product=cs.contact.product__c;
                         isocode=cs.contact.CurrencyIsoCode;
-                        if(psubscriptioncost!=null)
+                        if(productsubscription!=null)
                          {
-                            mdtwrapper= new ProductMetadataWrapper(homecountry,product,isocode,psubscriptioncost);
+                            productconfigwrapper= new ProductMetadataWrapper(homecountry,product,isocode,productsubscription);
                          } 
                     }
                     else
@@ -41,6 +43,6 @@ public with sharing class ProductInfoController {
             
         }
        
-        return mdtwrapper;         
+        return productconfigwrapper;         
     } 
 }

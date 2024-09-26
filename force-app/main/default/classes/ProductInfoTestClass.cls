@@ -1,7 +1,9 @@
 /*
 Author: Nishant Mohan Wavhal
-Apex Class TestClass for ProductInfoTestClass covering Admin ,Support User scenarios with Excpetions.
+Apex Class TestClass for ProductInfoTestClass covering Admin ,
+Support User scenarios with Excpetions.
 */
+
 @isTest
 public with sharing class ProductInfoTestClass {
     @TestSetup
@@ -98,9 +100,9 @@ public with sharing class ProductInfoTestClass {
             System.assertEquals('Germany', mwrap.homecountry);
             System.assertEquals('Metal', mwrap.product);
             System.assertEquals('EUR', mwrap.isocode);
-            System.assertEquals(16.90, mwrap.psubscriptioncost.Monthly_Charges__c);
-            System.assertEquals(45.00, mwrap.psubscriptioncost.Card_Replacement_Cost__c);
-            System.assertEquals(0.00, mwrap.psubscriptioncost.ATM_Fee__c);
+            System.assertEquals(16.90, mwrap.productsubscription.Monthly_Charges__c);
+            System.assertEquals(45.00, mwrap.productsubscription.Card_Replacement_Cost__c);
+            System.assertEquals(0.00, mwrap.productsubscription.ATM_Fee__c);
             Test.stopTest();
         }
         
@@ -115,9 +117,9 @@ public with sharing class ProductInfoTestClass {
         System.assertEquals('Germany', mwrap.homecountry);
         System.assertEquals('Metal', mwrap.product);
         System.assertEquals('EUR', mwrap.isocode);
-        System.assertEquals(16.90, mwrap.psubscriptioncost.Monthly_Charges__c);
-        System.assertEquals(45.00, mwrap.psubscriptioncost.Card_Replacement_Cost__c);
-        System.assertEquals(0.00, mwrap.psubscriptioncost.ATM_Fee__c);
+        System.assertEquals(16.90, mwrap.productsubscription.Monthly_Charges__c);
+        System.assertEquals(45.00, mwrap.productsubscription.Card_Replacement_Cost__c);
+        System.assertEquals(0.00, mwrap.productsubscription.ATM_Fee__c);
         Test.stopTest();
         
     }
@@ -146,9 +148,9 @@ public with sharing class ProductInfoTestClass {
             System.assertEquals('United Kingdom', mwrap.homecountry);
             System.assertEquals('Standard', mwrap.product);
             System.assertEquals('GBP', mwrap.isocode);
-            System.assertEquals(0.00, mwrap.psubscriptioncost.Monthly_Charges__c);
-            System.assertEquals(6.00, mwrap.psubscriptioncost.Card_Replacement_Cost__c);
-            System.assertEquals(1.70, mwrap.psubscriptioncost.ATM_Fee__c);
+            System.assertEquals(0.00, mwrap.productsubscription.Monthly_Charges__c);
+            System.assertEquals(6.00, mwrap.productsubscription.Card_Replacement_Cost__c);
+            System.assertEquals(1.70, mwrap.productsubscription.ATM_Fee__c);
             Test.stopTest();
         }
         
@@ -161,9 +163,9 @@ public with sharing class ProductInfoTestClass {
         System.assertEquals('United Kingdom', mwrap.homecountry);
         System.assertEquals('Standard', mwrap.product);
         System.assertEquals('GBP', mwrap.isocode);
-        System.assertEquals(0.00, mwrap.psubscriptioncost.Monthly_Charges__c);
-        System.assertEquals(6.00, mwrap.psubscriptioncost.Card_Replacement_Cost__c);
-        System.assertEquals(1.70, mwrap.psubscriptioncost.ATM_Fee__c);
+        System.assertEquals(0.00, mwrap.productsubscription.Monthly_Charges__c);
+        System.assertEquals(6.00, mwrap.productsubscription.Card_Replacement_Cost__c);
+        System.assertEquals(1.70, mwrap.productsubscription.ATM_Fee__c);
         Test.stopTest();
         
     }

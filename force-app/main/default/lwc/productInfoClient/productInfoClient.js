@@ -13,9 +13,9 @@ export default class ProductInfoClient extends LightningElement{
 
 homecountry;
 product;
-cost_calmonth;
-cardreplace_cost;
-atm_fee;
+costpermonth;
+cardreplacementcost;
+atmfee;
 isocode;
 error;
 
@@ -24,9 +24,9 @@ error;
         if (data) {
             this.homecountry = data.homecountry;
             this.product=data.product;
-            this.cost_calmonth=data.psubscriptioncost.Monthly_Charges__c;
-            this.atm_fee=data.psubscriptioncost.ATM_Fee__c;
-            this.cardreplace_cost=data.psubscriptioncost.Card_Replacement_Cost__c;
+            this.costpermonth=data.productsubscription.Monthly_Charges__c;
+            this.atmfee=data.productsubscription.ATM_Fee__c;
+            this.cardreplacementcost=data.productsubscription.Card_Replacement_Cost__c;
             this.isocode=data.isocode;
             this.error = undefined;
         } else if (error) {
@@ -41,10 +41,10 @@ error;
               );    
               this.homecountry = undefined;
               this.product=undefined;
-              this.cost_calmonth=undefined;
-              this.atm_fee=undefined;
+              this.costpermonth=undefined;
+              this.atmfee=undefined;
               this.isocode=undefined;
-              this.cardreplace_cost=undefined;
+              this.cardreplacementcost=undefined;
         }
     }
 }

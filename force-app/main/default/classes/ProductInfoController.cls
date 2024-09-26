@@ -18,8 +18,7 @@ public with sharing class ProductInfoController {
         if(caseId !=null)
         {
             Case cs = [select id,ContactId,contact.home_Country__c,contact.CurrencyIsoCode,contact.Product__c 
-                       from 
-                       Case 
+                       from Case 
                        where 
                        id =:caseId WITH USER_MODE limit 1];
            

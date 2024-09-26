@@ -3,19 +3,19 @@ Author: Nishant Mohan Wavhal
 Product Metadata Wrapper Class for ProductInfo Controller 
 and ProductInfoService*/
 
-global class ProductMetadataWrapper {
+public class ProductMetadataWrapper 
+{
     @AuraEnabled
-    global String homecountry;
+    public String homecountry;
     @AuraEnabled
-    global String product;
+    public String product;
     @AuraEnabled
-    global String isocode;
+    public String isocode;
     @AuraEnabled
-    global  Product_Subscription__mdt productsubscription;
+    public  Product_Subscription__mdt productsubscription;
   
-
-  global  ProductMetadataWrapper(String homecountry,String product,
-                                 String isocode,Product_Subscription__mdt productsubscription)
+    public  ProductMetadataWrapper(String homecountry,String product,
+                                   String isocode,Product_Subscription__mdt productsubscription)
   {
         this.homecountry=homecountry;
         this.product=product;

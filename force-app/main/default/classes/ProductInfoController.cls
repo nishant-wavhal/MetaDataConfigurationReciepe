@@ -17,21 +17,29 @@ public with sharing class ProductInfoController {
         
         if(caseId !=null)
         {
-            Case cs = [select id ,ContactId,contact.home_Country__c,contact.CurrencyIsoCode,contact.Product__c from Case where id =:caseId WITH USER_MODE limit 1];
+            Case cs = [select id,ContactId,contact.home_Country__c,contact.CurrencyIsoCode,contact.Product__c 
+                       from 
+                       Case 
+                       where 
+                       id =:caseId WITH USER_MODE limit 1];
+           
             if(cs!=null)
             { 
                 if(cs.ContactId!=null)
                 {
 
-                    if(cs.contact.home_Country__c!=null && cs.contact.product__c!=null && cs.contact.home_Country__c!='' && cs.contact.product__c!='')
+                    if(cs.contact.home_Country__c!=null  && cs.contact.product__c!=null && 
+                       cs.contact.home_Country__c!='' && cs.contact.product__c!='')
                     {
-                        productsubscription= CustomMetaDataInfo.getproductcostconfig(cs.contact.home_Country__c,cs.contact.product__c);                     
+                        productsubscription=
+                          CustomMetaDataInfo.getproductcostconfig(cs.contact.home_Country__c,cs.contact.product__c);                     
                         homeCountry=cs.contact.home_Country__c;
                         product=cs.contact.product__c;
                         isocode=cs.contact.CurrencyIsoCode;
                         if(productsubscription!=null)
                          {
-                            productconfigwrapper= new ProductMetadataWrapper(homecountry,product,isocode,productsubscription);
+                            productconfigwrapper= 
+                             new ProductMetadataWrapper(homecountry,product,isocode,productsubscription);
                          } 
                     }
                     else

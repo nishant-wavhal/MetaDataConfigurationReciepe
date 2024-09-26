@@ -25,7 +25,11 @@ global class ProductInfoService {
             Contact c;
             try
             {
-                c=[select id ,home_Country__c,Product__c,CurrencyIsoCode from Contact where uuid__c =:contactUUID limit 1];
+                c=[select id ,home_Country__c,Product__c,CurrencyIsoCode 
+                   from 
+                   Contact 
+                   where 
+                   uuid__c =:contactUUID limit 1];
             }
             catch(Exception e)
             {   
@@ -36,9 +40,11 @@ global class ProductInfoService {
             
             if(c!=null)
             {
-                if(c.home_Country__c!=null && c.product__c!=null && c.home_Country__c!='' && c.product__c!='')
+                if(c.home_Country__c!=null &&  c.product__c!=null && 
+                   c.home_Country__c!='' && c.product__c!='')
                 {        
-                    productsubscription= CustomMetaDataInfo.getproductcostconfig(c.home_Country__c,c.product__c);                     
+                    productsubscription= 
+                      CustomMetaDataInfo.getproductcostconfig(c.home_Country__c,c.product__c);                     
                     homeCountry=c.home_Country__c;                  
                     product=c.product__c;                   
                     isocode=c.CurrencyIsoCode;
@@ -46,7 +52,9 @@ global class ProductInfoService {
                     if(productsubscription!=null)
                     {           
                         res.statusCode=200; 
-                        res.ResponseBody =Blob.valueOf(JSON.serialize(new ProductMetadataWrapper(homecountry,product,isocode,productsubscription)));
+                        res.ResponseBody =
+                            Blob.valueOf(JSON.serialize
+                            (new ProductMetadataWrapper(homecountry,product,isocode,productsubscription)));
                     }
                     else
                     {
@@ -58,14 +66,18 @@ global class ProductInfoService {
             else
                 {
                     res.statusCode=400; 
-                    res.responseBody=Blob.valueOf(JSON.serialize(new CustomErrorException('500','Contact Value has an Error')));
+                    res.responseBody=Blob.valueOf
+                                      (JSON.serialize
+                                       (new CustomErrorException('500','Contact Value has an Error')));
                 }
             
         }
         else
         {		
             res.statusCode=400; 
-            res.ResponseBody =Blob.valueOf(JSON.serialize(new CustomErrorException('500','Please Enter Contact UUID')));
+            res.ResponseBody =Blob.valueOf
+                               (JSON.serialize
+                                (new CustomErrorException('500','Please Enter Contact UUID')));
         }
         
         

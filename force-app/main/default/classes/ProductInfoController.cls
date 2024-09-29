@@ -36,6 +36,7 @@ public with sharing class ProductInfoController {
                         homeCountry=cs.contact.home_Country__c;
                         product=cs.contact.product__c;
                         isocode=cs.contact.CurrencyIsoCode;
+                        
                         if(productsubscription!=null)
                         {
                          productconfigwrapper= 

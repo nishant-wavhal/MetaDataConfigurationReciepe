@@ -10,7 +10,7 @@ global with sharing class ProductInfoService {
     @HttpPOST
     global static void  getCustomerfeatures(String UUID) {
         
-        RestRequest req = RestContext.request;
+       
         RestResponse res =RestContext.response;
         
         String contactUUID= UUID;

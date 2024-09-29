@@ -54,7 +54,8 @@ global with sharing class ProductInfoService {
                         res.statusCode=200; 
                         res.ResponseBody =
                             Blob.valueOf(JSON.serializePretty
-                            (new ProductMetadataWrapper(homecountry,product,isocode,productsubscription)));
+                            (new ProductMetadataWrapper
+                            (homecountry,product,isocode,productsubscription)));
                     }
                     else
                     {

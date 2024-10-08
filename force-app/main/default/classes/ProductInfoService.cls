@@ -69,7 +69,7 @@ global with sharing class ProductInfoService {
                     res.statusCode=400; 
                     res.responseBody=Blob.valueOf
                                       (JSON.serialize
-                                       (new CustomErrorException('500','Contact Value has an Error')));
+                                       (new CustomErrorException('400','Contact Value has an Error')));
                 }
             
         }
@@ -78,7 +78,7 @@ global with sharing class ProductInfoService {
             res.statusCode=400; 
             res.ResponseBody =Blob.valueOf
                                (JSON.serialize
-                                (new CustomErrorException('500','Please Enter Contact UUID')));
+                                (new CustomErrorException('400','Please Enter Contact UUID')));
         }
         
         
